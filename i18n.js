@@ -1,10 +1,9 @@
-var langGoblal;
+var langGoblal, savedLang;
 window.langGoblal = langGoblal;
-var savedLang;
 window.savedLang = savedLang;
 const i18n = {
   en: {
-    'htmlTitle':'GeneSim: Simulation of Mendelian Laws of Inheritance',
+    htmlTitle: 'GeneSim: Simulation of Mendelian Laws of Inheritance',
     title: "Simulation of Mendelian Laws of Inheritance",
     translate: "中文",
     export: "Export Config",
@@ -34,7 +33,7 @@ const i18n = {
     number: "Number",
   },
   zh: {
-    'htmlTitle':'GeneSim: 模拟孟德尔遗传定律',
+    htmlTitle: 'GeneSim: 模拟孟德尔遗传定律',
     title: "孟德尔遗传定律模拟",
     translate: "EngLish",
     export: "导出配置",
