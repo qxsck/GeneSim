@@ -4,6 +4,7 @@ var savedLang;
 window.savedLang = savedLang;
 const i18n = {
   en: {
+    'htmlTitle':'GeneSim: Simulation of Mendelian Laws of Inheritance',
     title: "Simulation of Mendelian Laws of Inheritance",
     translate: "中文",
     export: "Export Config",
@@ -33,6 +34,7 @@ const i18n = {
     number: "Number",
   },
   zh: {
+    'htmlTitle':'GeneSim: 模拟孟德尔遗传定律',
     title: "孟德尔遗传定律模拟",
     translate: "EngLish",
     export: "导出配置",
@@ -69,6 +71,8 @@ langGoblal = savedLang === "zh" ? "en" : "zh";
 function translate(lang = savedLang) {
   const elements = document.querySelectorAll(".i18n");
   console.log("translating...");
+
+  document.title = i18n[lang].htmlTitle;
   elements.forEach((element) => {
     const key = element.attributes.type.nodeValue;
     if (!i18n[lang][key])
