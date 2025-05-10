@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+  <head>
+    <title>孟德尔遗传定律模拟</title>
+    <link
+      rel="preload"
+      href="style.css"
+      as="style"
+      onload="this.rel='stylesheet'"
+    />
+    <script src="i18n.js"></script>
+    <script src="script.js"></script>
+  </head>
+
+  <body>
+    <div class="top">
+      <div>
+        <div class="title"><span class="i18n" type="title"></span></div>
+      </div>
+      <div class="io-buttons">
+        <button onclick="_translate(langGoblal)">
+          <span class="i18n" type="translate"></span>
+        </button>
+        <button onclick="exportConfig()">
+          <span class="i18n" type="export"></span>
+        </button>
+        <button onclick="document.getElementById('fileInput').click()">
+          <span class="i18n" type="import"></span>
+        </button>
+        <input
+          type="file"
+          id="fileInput"
+          accept=".json"
+          onchange="importConfig(event)"
+        />
+      </div>
+    </div>
+    <div class="container">
+      <div class="config-panel">
+        <h3><span class="i18n" type="geneConFig"></span></h3>
+        <button onclick="addGene()">
+          <span class="i18n" type="addGene"></span>
+        </button>
+        <div id="genes-container"></div>
+      </div>
+
+      <div class="config-panel">
+        <h3><span class="i18n" type="phenoConfig"></span></h3>
+        <div id="phenotype-container"></div>
+      </div>
+
+      <div class="config-panel">
+        <h3><span class="i18n" type="parentsConfig"></span></h3>
+        <div id="parents-container"></div>
+        <button onclick="runSimulation()">
+          <span class="i18n" type="simulation"></span>
+        </button>
+      </div>
+
+      <div class="config-panel">
+        <h3><span class="i18n" type="simulationResult"></span></h3>
+        <div class="show-controls">
+          　<span class="i18n" type="sortType"></span>
+          <select id="sortType" onchange="runSimulation()">
+            <option value="genotype">
+              <span class="i18n" type="sortWithGene"></span>
+            </option>
+            <option value="probability">
+              <span class="i18n" type="sortWithProbability"></span>
+            </option>
+          </select>
+        </div>
+        <div class="show-controls">
+          　<span class="i18n" type="showType"></span>
+          <select id="showType" onchange="runSimulation()">
+            <option value="probability">
+              <span class="i18n" type="showProbability"></span>
+            </option>
+            <option value="count">
+              <span class="i18n" type="showNumber"></span>
+            </option>
+          </select>
+        </div>
+        <div id="results"></div>
+      </div>
+    </div>
+  </body>
+
+  <script>
+    function _translate(lang) {
+      translate(lang);
+    }
+    window.addEventListener("load", function () {
+      _translate(langGoblal);
+    });
+  </script>
+</html>

@@ -1,0 +1,112 @@
+.top {
+  padding: 20px;
+  background: #51b1ff;
+  color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 7px;
+  margin: 10px;
+}
+
+button {
+  background: #2196f3;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 7px;
+  margin: 5px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background: #1976d2;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  padding: 20px;
+  border-radius: 7px;
+}
+
+.config-panel {
+  background: #21d3ff;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 7px;
+}
+
+.gene-panel {
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 7px;
+}
+
+.allele-panel {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 7px;
+}
+
+.gene-phenotype-panel {
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 7px;
+}
+
+.phenotype-input {
+  margin: 5px 0;
+  border-radius: 7px;
+}
+
+.phenotype-input input {
+  margin-left: 5px;
+  width: 120px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #21c3ff;
+  color: white;
+}
+
+.show-controls {
+  margin: 10px 0;
+  padding: 5px;
+  background: #21c3ff;
+  border-radius: 7px;
+}
+
+#sortType {
+  padding: 5px;
+  margin-left: 10px;
+}
+
+#showType {
+  padding: 5px;
+  margin-left: 10px;
+}
+
+#fileInput {
+  display: none;
+}
