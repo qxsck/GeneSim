@@ -72,14 +72,14 @@ function generateGenotypeCombinations(gene) {
   const combinations = [];
   for (let i = 0; i < alleles.length; i++) {
     for (let j = i; j < alleles.length; j++) {
-      combinations.push([alleles[i], alleles[j]].sort().join(""));
+      combinations.push([alleles[i], alleles[j]].sort().join(" "));
     }
   }
   return [...new Set(combinations)];
 }
 
 function getDefaultPhenotype(gene, genotype) {
-  const alleles = genotype.split("");
+  const alleles = genotype.split(" ");
   return getDominantAllele(gene, alleles);
 }
 
@@ -282,10 +282,10 @@ function calculateOffspring() {
 
       genes.forEach((gene, idx) => {
         const alleles = [fg.alleles[idx], mg.alleles[idx]],
-          geno = alleles.sort().join(""),
+          geno = alleles.sort().join(" "),
           pheno = gene.phenotypes[geno] || getDominantAllele(gene, alleles);
 
-        genotype.push(alleles.sort().join(""));
+        genotype.push(alleles.sort().join(" "));
         phenotype.push(pheno);
       });
 
