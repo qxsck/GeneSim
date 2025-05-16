@@ -67,7 +67,7 @@ const i18n = {
 savedLang = localStorage.getItem("GeneSim.lang") || "zh";
 langGoblal = savedLang === "zh" ? "en" : "zh";
 
-function translate(lang = savedLang) {
+function translate(lang) {
   const elements = document.querySelectorAll(".i18n");
   console.log("translating...");
 

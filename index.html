@@ -18,7 +18,7 @@
         <div class="title"><span class="i18n" type="title"></span></div>
       </div>
       <div class="io-buttons">
-        <button onclick="_translate(langGoblal)">
+        <button onclick="__translate()">
           <span class="i18n" type="translate"></span>
         </button>
         <button onclick="exportConfig()">
@@ -71,7 +71,7 @@
           </select>
         </div>
         <div class="show-controls">
-          　<span class="i18n" type="showType"></span>
+          <span class="i18n" type="showType"></span>
           <select id="showType" onchange="runSimulation()">
             <option value="probability">
               <span class="i18n" type="showProbability"></span>
@@ -87,11 +87,14 @@
   </body>
 
   <script>
+    function __translate(){
+      _translate(savedLang === "zh" ? "en" : "zh");
+    }
     function _translate(lang) {
       translate(lang);
     }
     window.addEventListener("load", function () {
-      _translate(langGoblal);
+      _translate(savedLang);
     });
   </script>
 </html>
