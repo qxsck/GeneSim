@@ -1,7 +1,36 @@
+:root {
+  --background-color: #ffffff;
+  --text-color: #000000;
+  --color1: #ffffff;
+  --top-background: #51b1ff;
+  --button-background: #2196f3;
+  --buttonhover-background: #1976d2;
+  --config-panel-background: #21d3ff;
+  --border: #ddd;
+  --th-background: #21c3ff;
+}
+
+body.dark-theme {
+  --background-color: #000000;
+  --text-color: #ffffff;
+  --color1: #121212;
+  --top-background: #0c51b9;
+  --button-background: #0c5ab2;
+  --buttonhover-background: #114ba1;
+  --config-panel-background: #226dde;
+  --border: #076576;
+  --th-background: #004d40;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
 .top {
   padding: 20px;
-  background: #51b1ff;
-  color: white;
+  background: var(--top-background);
+  color: #ffffff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   display: flex;
   justify-content: space-between;
@@ -11,8 +40,8 @@
 }
 
 button {
-  background: #2196f3;
-  color: white;
+  background: var(--button-background);
+  color: var(--text-color);
   padding: 8px 15px;
   border-radius: 7px;
   margin: 5px;
@@ -22,7 +51,7 @@ button {
 }
 
 button:hover {
-  background: #1976d2;
+  background: var(--buttonhover-background);
 }
 
 .container {
@@ -34,16 +63,16 @@ button:hover {
 }
 
 .config-panel {
-  background: #21d3ff;
+  background: var(--config-panel-background);
   padding: 15px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--border);
   border-radius: 7px;
 }
 
 .gene-panel {
   margin-bottom: 15px;
   padding: 10px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--border);
   border-radius: 7px;
 }
 
@@ -51,14 +80,14 @@ button:hover {
   margin-top: 5px;
   margin-bottom: 5px;
   padding: 10px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--border);
   border-radius: 7px;
 }
 
 .gene-phenotype-panel {
   margin-bottom: 15px;
   padding: 10px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--border);
   border-radius: 7px;
 }
 
@@ -80,20 +109,20 @@ table {
 
 th,
 td {
-  border: 1px solid #ddd;
+  border: 1px solid var(--border);
   padding: 8px;
   text-align: left;
 }
 
 th {
-  background-color: #21c3ff;
-  color: white;
+  background-color: var(--th-background);
+  color: var(--color1);
 }
 
 .show-controls {
   margin: 10px 0;
   padding: 5px;
-  background: #21c3ff;
+  background: var(--button-background);
   border-radius: 7px;
 }
 

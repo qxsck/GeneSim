@@ -5,6 +5,7 @@ const i18n = {
   en: {
     htmlTitle: 'GeneSim: Simulation of Mendelian Laws of Inheritance',
     title: "Simulation of Mendelian Laws of Inheritance",
+    switchTheme: "🌓 Switch Theme",
     translate: "中文",
     export: "Export Config",
     import: "Import Config",
@@ -35,6 +36,7 @@ const i18n = {
   zh: {
     htmlTitle: 'GeneSim: 模拟孟德尔遗传定律',
     title: "孟德尔遗传定律模拟",
+    switchTheme: "🌓 切换主题",
     translate: "EngLish",
     export: "导出配置",
     import: "导入配置",
