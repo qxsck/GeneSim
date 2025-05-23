@@ -157,8 +157,8 @@ function renderGeneConfig() {
               <button onclick="addAllele(${gene.id})"><span class="i18n" type="addAllele">+ 等位</span></button>
           </div>
           ${gene.alleles
-            .map(
-              (allele, index) => `
+          .map(
+            (allele, index) => `
             <div class="allele-panel">
               <div>
                 <span class="i18n" type="allele"></span>-${index + 1}:
@@ -183,8 +183,8 @@ function renderGeneConfig() {
               </div>
             </div>
           `
-            )
-            .join("")}
+          )
+          .join("")}
         </div>
     `
     )
@@ -217,8 +217,8 @@ function renderPhenotypeConfig() {
         <div class="gene-phenotype-panel">
           <h4>${gene.name}</h4>
           ${generateGenotypeCombinations(gene)
-            .map(
-              (genotype) => `
+          .map(
+            (genotype) => `
             <div class="phenotype-input">
               ${genotype}:
               <input
@@ -228,8 +228,8 @@ function renderPhenotypeConfig() {
               >
             </div>
           `
-            )
-            .join("")}
+          )
+          .join("")}
         </div>
       `
     )
@@ -242,28 +242,28 @@ function renderParentConfig() {
         <div>
             <h4><span class="i18n" type="father"></span></h4>
             ${genes
-              .map(
-                (gene) => `
+      .map(
+        (gene) => `
                 <div>
                     <label>${gene.name}:</label>
                     ${createSelectors("father", gene)}
                 </div>
             `
-              )
-              .join("")}
+      )
+      .join("")}
         </div>
         <div>
             <h4><span class="i18n" type="mother"></span></h4>
             ${genes
-              .map(
-                (gene) => `
+      .map(
+        (gene) => `
                 <div>
                     <label>${gene.name}:</label>
                     ${createSelectors("mother", gene)}
                 </div>
             `
-              )
-              .join("")}
+      )
+      .join("")}
         </div>
     `;
 }
@@ -368,24 +368,23 @@ function displayResults(results) {
               </th>
             </tr>
             ${resultArray
-              .map(([key, prob]) => {
-                const [genotype, phenotype] = key.split("|");
-                return `
+      .map(([key, prob]) => {
+        const [genotype, phenotype] = key.split("|");
+        return `
                     <tr>
                         <td>${genotype}</td>
                         <td>${phenotype}</td>
                         <td>
-                          ${
-                            showType === "probability"
-                              ? (prob[0] * 100).toFixed(2)
-                              : prob[1]
-                          }
+                          ${showType === "probability"
+            ? (prob[0] * 100).toFixed(2)
+            : prob[1]
+          }
                           ${showType === "probability" ? "%" : ""}
                         </td>
                     </tr>
                 `;
-              })
-              .join("")}
+      })
+      .join("")}
         </table>
     `;
 }
