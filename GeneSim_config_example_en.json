@@ -1,0 +1,77 @@
+{
+  "version": 1,
+  "genes": [
+    {
+      "id": 0,
+      "name": "yellow and green",
+      "alleles": [
+        {
+          "name": "Y",
+          "priority": 2
+        },
+        {
+          "name": "y",
+          "priority": 1
+        }
+      ],
+      "phenotypes": {
+        "Y Y": "yellow",
+        "Y y": "yellow",
+        "y y": "green"
+      }
+    },
+    {
+      "id": 1,
+      "name": "round and wrinkled",
+      "alleles": [
+        {
+          "name": "R",
+          "priority": 2
+        },
+        {
+          "name": "r",
+          "priority": 1
+        }
+      ],
+      "phenotypes": {
+        "R R": "round",
+        "R r": "round",
+        "r r": "wrinkled"
+      }
+    }
+  ],
+  "parents": {
+    "father": [
+      {
+        "geneId": 0,
+        "alleles": [
+          "Y",
+          "y"
+        ]
+      },
+      {
+        "geneId": 1,
+        "alleles": [
+          "R",
+          "r"
+        ]
+      }
+    ],
+    "mother": [
+      {
+        "geneId": 0,
+        "alleles": [
+          "Y",
+          "y"
+        ]
+      },
+      {
+        "geneId": 1,
+        "alleles": [
+          "R",
+          "r"
+        ]
+      }
+    ]
+  }
+}

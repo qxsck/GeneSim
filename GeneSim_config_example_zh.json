@@ -1,0 +1,77 @@
+{
+  "version": 1,
+  "genes": [
+    {
+      "id": 0,
+      "name": "黄绿",
+      "alleles": [
+        {
+          "name": "Y",
+          "priority": 2
+        },
+        {
+          "name": "y",
+          "priority": 1
+        }
+      ],
+      "phenotypes": {
+        "Y Y": "黄色",
+        "Y y": "黄色",
+        "y y": "绿色"
+      }
+    },
+    {
+      "id": 1,
+      "name": "圆皱",
+      "alleles": [
+        {
+          "name": "R",
+          "priority": 2
+        },
+        {
+          "name": "r",
+          "priority": 1
+        }
+      ],
+      "phenotypes": {
+        "R R": "圆粒",
+        "R r": "圆粒",
+        "r r": "皱粒"
+      }
+    }
+  ],
+  "parents": {
+    "father": [
+      {
+        "geneId": 0,
+        "alleles": [
+          "Y",
+          "y"
+        ]
+      },
+      {
+        "geneId": 1,
+        "alleles": [
+          "R",
+          "r"
+        ]
+      }
+    ],
+    "mother": [
+      {
+        "geneId": 0,
+        "alleles": [
+          "Y",
+          "y"
+        ]
+      },
+      {
+        "geneId": 1,
+        "alleles": [
+          "R",
+          "r"
+        ]
+      }
+    ]
+  }
+}
