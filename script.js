@@ -272,7 +272,7 @@ function calculateOffspring() {
   const fatherGametes = getGametes("father"),
     motherGametes = getGametes("mother"),
     geneSum = fatherGametes.length * motherGametes.length,
-    results = {};
+    results = [];
 
   //console.log(fatherGametes, motherGametes)
   fatherGametes.forEach((fg) => {
@@ -292,15 +292,16 @@ function calculateOffspring() {
       //console.log(genotype, phenotype)
       const genotypeStr = genotype.join(" "),
         phenotypeStr = phenotype.join(" "),
-        probability = fg.probability * mg.probability,
-        key = `${genotypeStr}|${phenotypeStr}`;
+        probability = fg.probability * mg.probability;
 
-      //console.log(genes,genotypeStr, phenotypeStr, probability, key)
-      if (!results[key]) results[key] = [0, 0];
-      results[key] = [
-        (results[key][0] || 0) + probability,
-        (results[key][1] || 0) + geneSum * probability,
-      ];
+      results.push(
+        [
+          genotypeStr,
+          phenotypeStr,
+          probability,
+          geneSum * probability,
+        ]
+      );
     });
   });
 
@@ -346,15 +347,60 @@ function getDominantAllele(gene, alleles) {
 function displayResults(results) {
   const sortType = document.getElementById("sortType").value,
     showType = document.getElementById("showType").value,
-    resultArray = Object.entries(results),
     sortFunctions = {
-      genotype: (a, b) => !a[0].split("|")[0].localeCompare(b[0].split("|")[0]),
-      probability: (a, b) => b[1][0] - a[1][0],
+      genotypeName: (a, b) => !a[0].localeCompare(b[0]),
+      genotypeProbability: (a, b) => b[1][0] - a[1][0],
+      phenotypeName: (a, b) => !a[0].localeCompare(b[0]),
+      phenotypeProbability: (a, b) => b[1][0] - a[1][0],
     };
 
-  const sortedResults = resultArray.sort(sortFunctions[sortType]);
+  let flag =
+    (sortType === "phenotypeName" || sortType === "phenotypeProbability");
 
-  document.getElementById("results").innerHTML = `
+  console.log(results);
+
+  let temp = {};
+  for (let i = 0; i < results.length; i++) {
+    const [genotype, phenotype, probability, geneSum] = results[i];
+    if (!temp[genotype]) temp[genotype] = [0, 0, ''];
+    temp[genotype][0] = temp[genotype][0] + probability,
+      temp[genotype][1] = temp[genotype][1] + geneSum,
+      temp[genotype][2] = phenotype;
+  }
+
+  console.log(111, Object.entries(temp))
+
+  if (flag) {
+    let temp2 = {};
+    console.log(111,temp)
+    for (let i = 0; i < Object.entries(temp).length; i++) {
+      const [genotype, [probability, count, phenotype]] = Object.entries(temp)[i];
+      if (!temp2[phenotype]) temp2[phenotype] = [0, 0, ''];
+      temp2[phenotype][0] = temp2[phenotype][0] + probability,
+        temp2[phenotype][1] = temp2[phenotype][1] + count,
+        temp2[phenotype][2] = (temp2[phenotype][2] === '' ? '' : temp2[phenotype][2]+'<br>') + genotype;
+      console.log(temp2[phenotype])
+    }
+
+    temp = {};
+    console.log(222,temp2)
+    for (let i = 0; i < Object.entries(temp2).length; i++) {
+      const [phenotype, [probability, geneSum, genotype]] = Object.entries(temp2)[i];
+      if (!temp[genotype]) temp[genotype] = [0, 0, ''];
+      temp[genotype][0] = temp[genotype][0] + probability,
+        temp[genotype][1] = temp[genotype][1] + geneSum,
+        temp[genotype][2] = phenotype;
+    }
+    console.log(333,temp)
+  }
+
+  const resultArray = Object.entries(temp);
+  resultArray.sort(sortFunctions[sortType]);
+  console.log(resultArray)
+  document.getElementById("results").innerHTML =
+    !flag
+      ? (
+        `
         <table>
             <tr>
               <th>
@@ -364,29 +410,67 @@ function displayResults(results) {
                 <span class="i18n" type="showTypeInResult">
               </th>
               <th>
-                <span class="i18n" type="${showType === "probability" ? "priority" : "number"}">
+                <span class="i18n" type="${showType === "probability" ? "probability" : "count"}">
               </th>
             </tr>
             ${resultArray
-      .map(([key, prob]) => {
-        const [genotype, phenotype] = key.split("|");
-        return `
+          .map(([key, prob]) => {
+            const [genotype, phenotype] = [key, prob[2]];
+            console.log(genotype,prob[0], prob[1], prob[2])
+            return `
                     <tr>
                         <td>${genotype}</td>
                         <td>${phenotype}</td>
                         <td>
                           ${showType === "probability"
-            ? (prob[0] * 100).toFixed(2)
-            : prob[1]
-          }
+                ? (prob[0] * 100).toFixed(2)
+                : prob[1]
+              }
                           ${showType === "probability" ? "%" : ""}
                         </td>
                     </tr>
                 `;
-      })
-      .join("")}
+          })
+          .join("")}
         </table>
-    `;
+        `
+      )
+      : (
+        `
+        <table>
+            <tr>
+              <th>
+                <span class="i18n" type="showTypeInResult">
+              </th>
+              <th>
+                <span class="i18n" type="genoTypeInResult">
+              </th>
+              <th>
+                <span class="i18n" type="${showType === "probability" ? "probability" : "count"}">
+              </th>
+            </tr>
+            ${resultArray
+          .map(([key, prob]) => {
+            const [genotype, phenotype] = [key, prob[2]];
+            console.log(prob[0], prob[1], prob[2])
+            return `
+                    <tr>
+                        <td>${phenotype}</td>
+                        <td>${genotype}</td>
+                        <td>
+                          ${showType === "probability"
+                ? (prob[0] * 100).toFixed(2)
+                : prob[1]
+              }
+                          ${showType === "probability" ? "%" : ""}
+                        </td>
+                    </tr>
+                `;
+          })
+          .join("")}
+        </table>
+        `
+    );
 }
 
 function runSimulation() {
